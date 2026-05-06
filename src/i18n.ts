@@ -6,6 +6,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
@@ -112,7 +113,7 @@ i18n
                 tags: ['TypeScript', 'Gemini AI', 'Facebook Graph API', 'Node.js', 'Docker', 'Vite', 'Agentic Design']
               },
               {
-                name: 'FloraCore',
+                name: 'FloraCore (Enterprise Template)',
                 repo: 'flora-core',
                 role: 'Backend Developer',
                 desc: 'A production-ready REST API architecture built on .NET 9. This project serves as a master template for high-performance CMS and E-commerce platforms. It strictly adheres to Clean Architecture and DDD principles, featuring CQRS with MediatR, advanced caching with Redis, a robust Outbox pattern for data consistency, and comprehensive Global Exception Handling.',
