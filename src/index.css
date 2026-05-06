@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, -apple-system;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --color-bg: #030712;
+  --color-text: #f9fafb;
+  --color-text-muted: #9ca3af;
+  --color-accent: #22d3ee;
+  --color-accent-dim: rgba(34, 211, 238, 0.2);
+  --color-accent-gradient: to right, #ffffff, #cffafe, #22d3ee;
+  --color-card: rgba(17, 24, 39, 0.5);
+  --color-card-hover: rgba(17, 24, 39, 0.8);
+  --color-border: rgba(31, 41, 55, 1);
+  --color-border-hover: rgba(55, 65, 81, 1);
+  
+  --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-accent: 0 0 15px rgba(34, 211, 238, 0.5);
+  --bg-grid: linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+  --font-heading: var(--font-display);
+}
+
+.theme-minimal {
+  --color-bg: #fafafa;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-accent-dim: rgba(37, 99, 235, 0.1);
+  --color-accent-gradient: to right, #111827, #1f2937, #2563eb;
+  --color-card: #ffffff;
+  --color-card-hover: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-hover: #d1d5db;
+  
+  --shadow-custom: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-accent: 0 0 0 rgba(0,0,0,0);
+  --bg-grid: linear-gradient(to right, #f3f4f6 1px, transparent 1px), linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+  --font-heading: var(--font-sans);
+}
+
+.theme-brutalist {
+  --color-bg: #fde047;
+  --color-text: #000000;
+  --color-text-muted: #374151;
+  --color-accent: #ef4444;
+  --color-accent-dim: #000000;
+  --color-accent-gradient: to right, #000000, #000000, #ef4444;
+  --color-card: #ffffff;
+  --color-card-hover: #f3f4f6;
+  --color-border: #000000;
+  --color-border-hover: #000000;
+  
+  --shadow-custom: 8px 8px 0px 0px #000000;
+  --shadow-accent: 4px 4px 0px 0px #000000;
+  --bg-grid: none;
+  --font-heading: var(--font-mono);
+}
+
+.theme-glass {
+  --color-bg: #0f172a;
+  --color-text: #ffffff;
+  --color-text-muted: #94a3b8;
+  --color-accent: #d946ef;
+  --color-accent-dim: rgba(217, 70, 239, 0.2);
+  --color-accent-gradient: to right, #e2e8f0, #fbcfe8, #d946ef;
+  --color-card: rgba(255, 255, 255, 0.03);
+  --color-card-hover: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+  
+  --shadow-custom: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-accent: 0 0 20px rgba(217, 70, 239, 0.4);
+  --bg-grid: none;
+  --font-heading: var(--font-serif);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.theme-brutalist .transform-style-3d {
+  transform-style: flat;
+}
+.theme-brutalist .brutal-border {
+  border-width: 3px;
+  border-color: #000;
+}
+.glass-effect {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
