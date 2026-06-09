@@ -109,43 +109,43 @@ i18n
                 name: 'AI Fanpage Manager (Agentic AI)',
                 repo: 'ai-fanpage-manager',
                 role: 'Full-Stack Developer',
-                desc: 'A sophisticated multi-agent system designed to fully automate Facebook Fanpage management. It utilizes LLMs (Gemini Pro) to analyze viral trends, generate contextually relevant posts, and perform automated scheduling. The system includes an intelligent image search engine and high-fidelity asset generation, reducing human content creation effort by 90%.',
-                tags: ['TypeScript', 'Gemini AI', 'Facebook Graph API', 'Node.js', 'Docker', 'Vite', 'Agentic Design']
+                desc: 'An intelligent content management and automation platform for Facebook Fanpages. Integrates Gemini AI copywriting, automated stock image search, AutoReels video creation, Cloudinary CDN, visual Node-based marketing workflows, and real-time state synchronization via Redis Streams.',
+                tags: ['TypeScript', 'React 19', 'Tailwind CSS 4', 'Express', 'PostgreSQL', 'Prisma', 'Redis Streams', 'Gemini AI', 'Cloudinary']
               },
               {
                 name: 'FloraCore (Enterprise Template)',
                 repo: 'flora-core',
                 role: 'Backend Developer',
-                desc: 'A production-ready REST API architecture built on .NET 9. This project serves as a master template for high-performance CMS and E-commerce platforms. It strictly adheres to Clean Architecture and DDD principles, featuring CQRS with MediatR, advanced caching with Redis, a robust Outbox pattern for data consistency, and comprehensive Global Exception Handling.',
-                tags: ['.NET 9', 'EF Core', 'Clean Architecture', 'CQRS', 'MediatR', 'Redis', 'Docker', 'PostgreSQL']
+                desc: 'An enterprise-grade .NET 9 REST API boilerplate. Adheres strictly to Clean Architecture and DDD principles. Features CQRS with MediatR, native HybridCache (L1 Memory + L2 Redis), Outbox pattern with Hangfire for atomic operations, Polly resilience policies, and distributed tracing with OpenTelemetry.',
+                tags: ['.NET 9', 'EF Core 9', 'Dapper', 'Clean Architecture', 'CQRS', 'MediatR', 'HybridCache', 'Redis', 'Polly', 'Outbox Pattern']
               },
               {
                 name: 'Auto Reels AI (Media Pipeline)',
                 repo: 'autoreels',
                 role: 'Full-Stack Developer',
-                desc: 'An end-to-end automated media production pipeline. The system monitors global news feeds, uses LLMs to transform news into engaging short-form scripts, synthesizes natural voice-overs using ElevenLabs, and programmatically renders 1080x1920 vertical videos using FFmpeg and GSAP. Designed for rapid scale in the automated entertainment industry.',
-                tags: ['Node.js', 'TypeScript', 'React 19', 'Prisma', 'Gemini AI', 'FFMPEG', 'GSAP', 'Cloudinary']
+                desc: 'A distributed AI-powered portrait short-form video studio. Scrapes content feeds, drafts scripts using Gemini, synthesizes voices via ElevenLabs and Microsoft Edge TTS, dynamically designs bespoke Bento grid HTML layouts using Gemini Flash, renders 1080x1920 vertical videos via HyperFrames (headless Chromium) and FFmpeg, managed by an Upstash Redis Streams queue with automatic TikTok publishing.',
+                tags: ['Node.js', 'TypeScript', 'React 19', 'Tailwind CSS 4', 'Redis Streams', 'Gemini AI', 'HyperFrames', 'FFmpeg', 'TikTok API']
               },
               {
                 name: 'ChinChin Floral Digital (3D E-commerce)',
                 repo: 'chinchin-floral',
                 role: 'Frontend Developer',
-                desc: 'A next-generation e-commerce experience for a luxury floral brand. It features interactive 3D product visualization using Three.js and React Three Fiber, allowing customers to view arrangements from every angle. The UI is built with a focus on "Neumorphism" and "Glassmorphism" aesthetics, powered by Framer Motion for liquid-smooth transitions.',
-                tags: ['React 19', 'TypeScript', 'Three.js', 'Tailwind CSS', 'Framer Motion', 'Vite', '3D Graphics']
+                desc: 'A premium e-commerce platform for high-end floral arts and gifts. Features interactive 3D product visualizations using Three.js and React Three Fiber, playfair typography, dynamic shopping cart, role-based authentication, and a full-featured admin dashboard for CRUD operations on products and categories synced with LocalStorage and REST APIs.',
+                tags: ['React 19', 'TypeScript', 'Three.js', 'Tailwind CSS 4', 'Framer Motion', 'LocalStorage', 'Vite']
               },
               {
                 name: 'Nông Y AI (Agri-AI Mobile App)',
                 repo: 'agri-ai',
                 role: 'Mobile Developer',
-                desc: 'A smart mobile application helping Vietnamese farmers modernize crop protection. It integrates advanced Vision AI to diagnose plant diseases from camera photos in real-time. Features include hands-free voice commands, AI-driven technical manual search, and location-based weather alerts. Built as a high-performance cross-platform app using Capacitor.',
-                tags: ['React 19', 'TypeScript', 'Capacitor', 'Gemini Vision AI', 'Android', 'PWA']
+                desc: 'A smart mobile application helping farmers diagnose crop diseases from camera photos in real-time. Powered by Gemini 3.1 Pro, it offers immediate symptom analysis and treatment plans. Features hands-free AI voice calls, image-assisted chat, a technical farming handbook, GPS weather integration, and offline diagnosis history built with Capacitor.',
+                tags: ['React 19', 'TypeScript', 'Capacitor 8', 'Gemini Pro/Vision', 'Speech-to-Text (STT)', 'Text-to-Speech (TTS)', 'Android']
               },
               {
                 name: 'Wake-on-LAN over Internet (WoL)',
                 repo: 'WoL',
                 role: 'Full-Stack Developer',
-                desc: 'A lightweight yet secure utility to solve the challenge of remote hardware management. It allows users to wake up home or office computers from anywhere via a web-based dashboard. Implements magic packet broadcasting across subnets and provides a simplified secure gateway for personal infrastructure management.',
-                tags: ['TypeScript', 'Express', 'Node.js', 'React', 'Vite', 'Network Protocols']
+                desc: 'A modern web dashboard to manage and boot computers remotely via the Wake-on-LAN (WoL) protocol. Supports Wake over WAN (via Public IP or DDNS with Router Port Forwarding), local device list caching via LocalStorage, animated micro-interactions with Framer Motion, and a lightweight Express backend serving magic packet broadcasts.',
+                tags: ['React 19', 'TypeScript', 'Tailwind CSS 4', 'Express', 'Node-WoL', 'Framer Motion']
               }
             ]
           },
@@ -269,43 +269,43 @@ i18n
                 name: 'Quản lý Fanpage AI (Agentic AI)',
                 repo: 'ai-fanpage-manager',
                 role: 'Full-Stack Developer',
-                desc: 'Hệ thống đa tác nhân (multi-agent) tinh vi giúp tự động hóa hoàn toàn việc quản lý Fanpage Facebook. Sử dụng các mô hình ngôn ngữ lớn (Gemini Pro) để phân tích xu hướng thị trường, tự động tạo bài viết có tính tương tác cao và lên lịch đăng bài tối ưu. Tích hợp bộ máy tìm kiếm và tạo hình ảnh thông minh, giúp giảm 90% nỗ lực sáng tạo nội dung của con người.',
-                tags: ['TypeScript', 'Gemini AI', 'Facebook Graph API', 'Node.js', 'Docker', 'Vite', 'Agentic Design']
+                desc: 'Nền tảng quản lý & tự động hóa nội dung Facebook Fanpage thông minh. Tích hợp hệ sinh thái AI sinh văn bản (Gemini AI), tìm kiếm hình ảnh tự động, dựng video tự động (AutoReels), quản lý thư viện truyền thông CDN (Cloudinary), thiết kế chiến dịch trực quan bằng Node-Based Workflows và đồng bộ trạng thái thời gian thực qua Event Bus (Redis Streams).',
+                tags: ['TypeScript', 'React 19', 'Tailwind CSS 4', 'Express', 'PostgreSQL', 'Prisma', 'Redis Streams', 'Gemini AI', 'Cloudinary']
               },
               {
                 name: 'FloraCore (Enterprise Template)',
                 repo: 'flora-core',
                 role: 'Backend Developer',
-                desc: 'Kiến trúc REST API sẵn sàng cho sản xuất xây dựng trên .NET 9. Dự án đóng vai trò là mẫu chuẩn cho các hệ thống CMS và Thương mại điện tử hiệu năng cao. Tuân thủ nghiêm ngặt các nguyên tắc Clean Architecture và DDD, tích hợp CQRS với MediatR, cơ chế bộ nhớ đệm nâng cao với Redis, mẫu Outbox để đảm bảo nhất quán dữ liệu và xử lý lỗi tập trung toàn hệ thống.',
-                tags: ['.NET 9', 'EF Core', 'Clean Architecture', 'CQRS', 'MediatR', 'Redis', 'Docker', 'PostgreSQL']
+                desc: 'Mẫu kiến trúc REST API cấp doanh nghiệp xây dựng trên .NET 9 và C# 13. Tuân thủ nghiêm ngặt nguyên lý Clean Architecture và DDD, tích hợp CQRS với MediatR, bộ nhớ đệm kép HybridCache (L1 Memory + L2 Redis), mẫu Outbox kết hợp Hangfire đảm bảo nhất quán dữ liệu, cơ chế chống lỗi Polly và giám sát phân tán qua OpenTelemetry.',
+                tags: ['.NET 9', 'EF Core 9', 'Dapper', 'Clean Architecture', 'CQRS', 'MediatR', 'HybridCache', 'Redis', 'Polly', 'Outbox Pattern']
               },
               {
                 name: 'Auto Reels AI (Media Pipeline)',
                 repo: 'autoreels',
                 role: 'Full-Stack Developer',
-                desc: 'Quy trình sản xuất nội dung đa phương tiện tự động khép kín. Hệ thống theo dõi luồng tin tức toàn cầu, sử dụng LLM để chuyển hóa tin tức thành kịch bản video ngắn hấp dẫn, tổng hợp giọng nói tự nhiên qua ElevenLabs và tự động render video dọc 1080x1920 bằng FFmpeg và GSAP. Được thiết kế để mở rộng quy mô nhanh chóng trong ngành giải trí tự động.',
-                tags: ['Node.js', 'TypeScript', 'React 19', 'Prisma', 'Gemini AI', 'FFMPEG', 'GSAP', 'Cloudinary']
+                desc: 'Hệ thống sản xuất video ngắn (Reels) tự động hóa đa nền tảng. Tự động thu thập nguồn tin, dùng Gemini viết kịch bản, chuyển đổi văn bản thành giọng nói mượt mà (ElevenLabs/Edge TTS), thiết kế bố cục Bento HTML/CSS độc bản bằng Gemini Flash, kết xuất video dọc 1080x1920 bằng HyperFrames (Chromium không đầu) và FFmpeg, điều phối qua hàng đợi Upstash Redis Streams và xuất bản trực tiếp lên TikTok.',
+                tags: ['Node.js', 'TypeScript', 'React 19', 'Tailwind CSS 4', 'Redis Streams', 'Gemini AI', 'HyperFrames', 'FFmpeg', 'TikTok API']
               },
               {
                 name: 'ChinChin Floral Digital (3D E-commerce)',
                 repo: 'chinchin-floral',
                 role: 'Frontend Developer',
-                desc: 'Trải nghiệm thương mại điện tử thế hệ mới cho thương hiệu hoa cao cấp. Nổi bật với tính năng hiển thị sản phẩm 3D tương tác sử dụng Three.js và React Three Fiber, cho phép khách hàng quan sát sản phẩm từ mọi góc độ. Giao diện được thiết kế theo phong cách Neumorphism và Glassmorphism, kết hợp với Framer Motion để tạo ra các hiệu ứng chuyển cảnh mượt mà.',
-                tags: ['React 19', 'TypeScript', 'Three.js', 'Tailwind CSS', 'Framer Motion', 'Vite', '3D Graphics']
+                desc: 'Nền tảng thương mại điện tử hoa tươi và quà tặng cao cấp. Nổi bật với hoạt cảnh 3D tương tác chân thực sử dụng Three.js và React Three Fiber, giao diện tinh tế mang phong cách sang trọng với Playfair & Inter, giỏ hàng động, hệ thống phân quyền đăng nhập và bảng quản trị Admin quản lý CRUD sản phẩm/danh mục đồng bộ tức thời qua LocalStorage/API.',
+                tags: ['React 19', 'TypeScript', 'Three.js', 'Tailwind CSS 4', 'Framer Motion', 'LocalStorage', 'Vite']
               },
               {
                 name: 'Nông Y AI (Agri-AI Mobile App)',
                 repo: 'agri-ai',
                 role: 'Mobile Developer',
-                desc: 'Ứng dụng di động thông minh hỗ trợ nông dân Việt Nam hiện đại hóa quy trình bảo vệ cây trồng. Tích hợp Vision AI tiên tiến để chẩn đoán sâu bệnh từ ảnh chụp thực tế trong thời gian thực. Các tính năng bao gồm điều khiển bằng giọng nói rảnh tay, tra cứu cẩm nang kỹ thuật bằng AI và cảnh báo thời tiết cục bộ. Xây dựng như một ứng dụng đa nền tảng hiệu năng cao bằng Capacitor.',
-                tags: ['React 19', 'TypeScript', 'Capacitor', 'Gemini Vision AI', 'Android', 'PWA']
+                desc: 'Ứng dụng di động thông minh hỗ trợ nông dân Việt Nam chẩn đoán sâu bệnh cây trồng tức thời qua ảnh chụp camera. Sử dụng Gemini 3.1 Pro cung pháp giải pháp điều trị chi tiết. Nổi bật với tính năng gọi thoại rảnh tay (hands-free) trò chuyện trực tiếp với AI, nhắn tin kết hợp gửi ảnh, cẩm nang canh tác kỹ thuật, thời tiết GPS thực tế và lưu trữ lịch sử ngoại tuyến bằng Capacitor.',
+                tags: ['React 19', 'TypeScript', 'Capacitor 8', 'Gemini Pro/Vision', 'Speech-to-Text (STT)', 'Text-to-Speech (TTS)', 'Android']
               },
               {
                 name: 'Wake-on-LAN qua Internet (WoL)',
                 repo: 'WoL',
                 role: 'Full-Stack Developer',
-                desc: 'Tiện ích nhỏ gọn nhưng bảo mật giúp giải quyết bài toán quản lý phần cứng từ xa. Cho phép người dùng đánh thức máy tính tại nhà hoặc văn phòng từ bất cứ đâu thông qua bảng điều khiển web. Triển khai cơ chế phát gói tin magic packet qua các lớp mạng con và cung cấp cổng kết nối bảo mật đơn giản cho hạ tầng cá nhân.',
-                tags: ['TypeScript', 'Express', 'Node.js', 'React', 'Vite', 'Network Protocols']
+                desc: 'Bảng điều khiển hiện đại giúp quản lý và khởi động máy tính từ xa qua giao thức Wake-on-LAN (WoL). Hỗ trợ Wake over WAN (qua IP Public hoặc tên miền DDNS kết hợp Port Forwarding trên Router), lưu trữ danh sách thiết bị cục bộ qua LocalStorage, giao diện tương tác mượt mạc với Framer Motion và máy chủ Express tích hợp gửi Magic Packet UDP.',
+                tags: ['React 19', 'TypeScript', 'Tailwind CSS 4', 'Express', 'Node-WoL', 'Framer Motion']
               }
             ]
           },

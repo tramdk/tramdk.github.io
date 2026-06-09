@@ -292,9 +292,12 @@ const Skills = () => {
   return (
     <section id="skills" ref={ref} className="py-24 px-6 md:px-12 max-w-7xl mx-auto perspective-1000 text-center relative z-10">
       <motion.h2 
-        style={{ scale: useTransform(scrollYProgress, [0, 0.5], [0.8, 1]), opacity: useTransform(scrollYProgress, [0, 0.5], [0, 1]) }}
+        style={{ 
+          scale: useTransform(scrollYProgress, [0, 0.5], [0.8, 1]), 
+          opacity: useTransform(scrollYProgress, [0, 0.5], [0, 1]),
+          fontFamily: 'var(--font-heading)'
+        }}
         className="text-4xl md:text-5xl font-bold mb-16 text-[var(--color-text)] transition-colors duration-500"
-        style={{ fontFamily: 'var(--font-heading)' }}
       >
         {t('skills.title').split(' ')[0]} <span className="text-[var(--color-accent)]">{t('skills.title').split(' ').slice(1).join(' ')}</span>
       </motion.h2>
