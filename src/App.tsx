@@ -79,6 +79,17 @@ const LanguageSwitcher = () => {
   );
 };
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return isMobile;
+}
+
 
 // --- Dynamic Background Effect ---
 const DynamicBackground = () => {
@@ -117,14 +128,15 @@ const Hero = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 25, restDelta: 0.001 });
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const y = useTransform(smoothProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(smoothProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(smoothProgress, [0, 1], [1, 0.8]);
+  const rotateX = useTransform(smoothProgress, [0, 1], [0, 20]);
 
   return (
-    <div ref={ref} className="h-screen flex items-center justify-center perspective-1000 overflow-hidden relative">
+    <div ref={ref} className="min-h-[100dvh] py-12 flex items-center justify-center perspective-1000 overflow-hidden relative">
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-accent-dim)] via-[var(--color-bg)] to-[var(--color-bg)] -z-10 transition-colors duration-500" />
       <div 
         className="absolute inset-0 -z-20 opacity-20 transition-opacity duration-500" 
@@ -199,9 +211,10 @@ const Summary = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
-  const rotateX = useTransform(scrollYProgress, [0, 1], [40, 0]);
-  const z = useTransform(scrollYProgress, [0, 1], [-200, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 25, restDelta: 0.001 });
+  const rotateX = useTransform(smoothProgress, [0, 1], [40, 0]);
+  const z = useTransform(smoothProgress, [0, 1], [-200, 0]);
+  const opacity = useTransform(smoothProgress, [0, 0.5, 1], [0, 0.5, 1]);
 
   return (
     <section id="summary" ref={ref} className="py-32 px-6 md:px-12 max-w-5xl mx-auto perspective-1000 relative z-20">
@@ -223,9 +236,10 @@ const Summary = () => {
 
 // --- Skills Section 3D ---
 const SkillCard = ({ title, icon: Icon, items, index, progress }: any) => {
+  const isMobile = useIsMobile();
   const isEven = index % 2 === 0;
-  const rotateY = useTransform(progress, [0, 0.5, 1], [isEven ? -30 : 30, 0, 0]);
-  const x = useTransform(progress, [0, 0.5, 1], [isEven ? -100 : 100, 0, 0]);
+  const rotateY = useTransform(progress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [isEven ? -30 : 30, 0, 0]);
+  const x = useTransform(progress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [isEven ? -100 : 100, 0, 0]);
   const opacity = useTransform(progress, [0, 0.4, 1], [0, 1, 1]);
 
   return (
@@ -261,31 +275,44 @@ const Skills = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 70, damping: 20, restDelta: 0.001 });
 
   const skills = [
     { title: t('skills.fe.title'), icon: Layout, items: [
-      { text: "React, Angular, AngularJS", icon: Globe }, 
-      { text: "TypeScript / JavaScript", icon: FileCode }, 
-      { text: "Bootstrap / Tailwind CSS", icon: Palette }, 
-      { text: "Immersive & Responsive UIs", icon: Activity }
+      { text: "Angular (v17-), RxJS", icon: Globe }, 
+      { text: "Component Architecture", icon: Layers }, 
+      { text: "HttpInterceptors & State", icon: Zap }, 
+      { text: "AngularJS Migration", icon: Activity }
     ]},
     { title: t('skills.be.title'), icon: Server, items: [
-      { text: ".NET Core & .NET 8", icon: Server }, 
-      { text: "Clean Architecture", icon: Layers }, 
-      { text: "RESTful & Microservices", icon: Server }, 
+      { text: ".NET 9 / .NET 8 / Core", icon: Server }, 
+      { text: "ASP.NET Web API", icon: Globe }, 
+      { text: "Entity Framework Core", icon: Database }, 
       { text: "SignalR (Real-time)", icon: Zap }
     ]},
     { title: t('skills.db.title'), icon: Database, items: [
-      { text: "SQL Server, PostgreSQL, MongoDB", icon: Database }, 
-      { text: "Redis Cache", icon: Database }, 
+      { text: "SQL Server & PostgreSQL", icon: Database }, 
+      { text: "MongoDB", icon: Database }, 
       { text: "ElasticSearch", icon: Search }, 
-      { text: "High-throughput Storage", icon: Zap }
+      { text: "Redis Cache", icon: Zap }
+    ]},
+    { title: t('skills.perf.title'), icon: Activity, items: [
+      { text: "EF Core + Dapper (Hybrid)", icon: Layers }, 
+      { text: "Native .NET 9 HybridCache", icon: Zap }, 
+      { text: "AsNoTracking & LINQ Proj.", icon: FileCode }, 
+      { text: "Large Dataset Tuning", icon: Activity }
+    ]},
+    { title: t('skills.arch.title'), icon: Layers, items: [
+      { text: "Clean Arch. & DDD", icon: Layers }, 
+      { text: "Microservices & SOLID", icon: Server }, 
+      { text: "CQRS & MediatR (Slices)", icon: Activity }, 
+      { text: "N-Layer Architecture", icon: FileCode }
     ]},
     { title: t('skills.ai.title'), icon: Cpu, items: [
-      { text: "Agentic AI Systems", icon: Cpu }, 
-      { text: "Gemini Pro / Vision", icon: Search }, 
-      { text: "Automated Workflows", icon: Activity }, 
-      { text: "Applied Data Analytics", icon: Layers }
+      { text: "System Performance Tuning", icon: Activity }, 
+      { text: "Enterprise AI Integration", icon: Cpu }, 
+      { text: "Distributed System Design", icon: Globe }, 
+      { text: "Scalable Architecture", icon: Layers }
     ]},
   ];
 
@@ -293,8 +320,8 @@ const Skills = () => {
     <section id="skills" ref={ref} className="py-24 px-6 md:px-12 max-w-7xl mx-auto perspective-1000 text-center relative z-10">
       <motion.h2 
         style={{ 
-          scale: useTransform(scrollYProgress, [0, 0.5], [0.8, 1]), 
-          opacity: useTransform(scrollYProgress, [0, 0.5], [0, 1]),
+          scale: useTransform(smoothProgress, [0, 0.5], [0.8, 1]), 
+          opacity: useTransform(smoothProgress, [0, 0.5], [0, 1]),
           fontFamily: 'var(--font-heading)'
         }}
         className="text-4xl md:text-5xl font-bold mb-16 text-[var(--color-text)] transition-colors duration-500"
@@ -305,7 +332,7 @@ const Skills = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left perspective-1000 transform-style-3d">
         {skills.map((skill, i) => (
-          <SkillCard key={i} {...skill} index={i} progress={scrollYProgress} />
+          <SkillCard key={i} {...skill} index={i} progress={smoothProgress} />
         ))}
       </div>
     </section>
@@ -314,7 +341,8 @@ const Skills = () => {
 
 // --- Experience & Projects ---
 const ExperienceItem = ({ year, title, role, teamSize, tasks, tech, progress, index }: any) => {
-  const y = useTransform(progress, [0, 0.6, 1], [100, 0, 0]);
+  const isMobile = useIsMobile();
+  const y = useTransform(progress, [0, 0.6, 1], isMobile ? [20, 0, 0] : [100, 0, 0]);
   const opacity = useTransform(progress, [0, 0.5, 1], [0, 1, 1]);
   const scale = useTransform(progress, [0, 0.5, 1], [0.9, 1, 1]);
 
@@ -373,6 +401,7 @@ const Experience = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 70, damping: 20, restDelta: 0.001 });
 
   const expData = t('projects.list', { returnObjects: true }) as any[];
   
@@ -412,7 +441,7 @@ const Experience = () => {
       <div className="relative">
         <div className="absolute left-0 md:hidden top-0 bottom-0 w-px bg-[var(--color-border)] ml-[7px] transition-colors duration-500" />
         {experiences.map((exp, i) => (
-          <ExperienceItem key={i} {...exp} index={i} progress={scrollYProgress} />
+          <ExperienceItem key={i} {...exp} index={i} progress={smoothProgress} />
         ))}
       </div>
     </section>

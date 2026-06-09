@@ -50,12 +50,12 @@ i18n
           },
           skills: {
             title: 'Technical Skills',
-            fe: { title: 'Modern Frontend Ecosystems', desc: 'Crafting immersive and highly responsive user experiences using cutting-edge JavaScript frameworks and motion design.' },
-            be: { title: 'Robust Backend Engineering', desc: 'Engineering secure, high-performance RESTful services and microservices designed for enterprise-scale reliability.' },
-            db: { title: 'Data Modeling & Management', desc: 'Designing optimized data schemas and high-throughput storage solutions for complex business environments.' },
-            perf: { title: 'System Hardening & Optimization', desc: 'Identifying performance bottlenecks and fine-tuning applications for maximum responsiveness and scalability.' },
-            arch: { title: 'Software Foundations & Design', desc: 'Implementing maintainable architectures using SOLID principles, Clean Code, and proven industry design patterns.' },
-            ai: { title: 'Applied AI & LLM Integration', desc: 'Bridging the gap between software and intelligence by integrating modern AI capabilities and LLM-driven solutions.' }
+            fe: { title: 'Front-end Development', desc: 'Core & State RxJS, component-driven architecture, and legacy AngularJS system migrations.' },
+            be: { title: 'Back-end Development', desc: 'Design and engineering of web APIs and microservices using .NET 9, .NET 8, and real-time SignalR.' },
+            db: { title: 'Database & Search', desc: 'Advanced indexing and administration of SQL Server, PostgreSQL, MongoDB, and ElasticSearch.' },
+            perf: { title: 'Performance & Data Access', desc: 'Hybrid data access (EF Core + Dapper), native .NET 9 HybridCache, and query tuning for Big Data.' },
+            arch: { title: 'Architecture & Patterns', desc: 'Clean Architecture, Domain-Driven Design (DDD), CQRS with MediatR vertical slices, and SOLID.' },
+            ai: { title: 'Advanced Expertise', desc: 'System performance tuning, enterprise AI integration, scalable system design, and distributed systems.' }
           },
           experience: {
             title: 'Work Experience',
@@ -210,12 +210,12 @@ i18n
           },
           skills: {
             title: 'Kỹ năng chuyên môn',
-            fe: { title: 'Hệ sinh thái Frontend hiện đại', desc: 'Kiến tạo trải nghiệm người dùng tinh tế, phản hồi nhanh và tương tác mượt mà trên nền tảng các framework JS hiện đại.' },
-            be: { title: 'Kỹ thuật Backend vững chắc', desc: 'Xây dựng các dịch vụ RESTful và microservices an toàn, hiệu năng cao, đáp ứng tiêu chuẩn khắt khe của doanh nghiệp.' },
-            db: { title: 'Mô hình hóa & Quản trị Dữ liệu', desc: 'Thiết kế lược đồ dữ liệu tối ưu và các giải pháp lưu trữ thông lượng lớn cho môi trường kinh doanh phức tạp.' },
-            perf: { title: 'Tối ưu hóa & Củng cố Hệ thống', desc: 'Phân tích điểm nghẽn hiệu năng và tinh chỉnh hệ thống để đạt tốc độ phản hồi và khả năng mở rộng tối đa.' },
-            arch: { title: 'Nền tảng Kiến trúc & Thiết kế', desc: 'Triển khai mã nguồn dễ bảo trì dựa trên nguyên lý SOLID, Clean Code và các mẫu thiết kế chuẩn mực của ngành.' },
-            ai: { title: 'Trí tuệ Nhân tạo thực thi', desc: 'Kết nối phần mềm với sức mạnh của trí tuệ nhân tạo thông qua việc tích hợp các mô hình LLM và giải pháp AI thông minh.' }
+            fe: { title: 'Phát triển Front-end', desc: 'Quản lý trạng thái với RxJS, kiến trúc định hướng thành phần, và di trú hệ thống cũ AngularJS.' },
+            be: { title: 'Phát triển Back-end', desc: 'Thiết kế và phát triển Web API, microservices sử dụng .NET 9, .NET 8, và thời gian thực SignalR.' },
+            db: { title: 'Cơ sở dữ liệu & Tìm kiếm', desc: 'Quản trị và tối ưu hóa chỉ mục SQL Server, PostgreSQL, MongoDB, và ElasticSearch.' },
+            perf: { title: 'Hiệu năng & Truy xuất dữ liệu', desc: 'Truy cập dữ liệu lai (EF Core + Dapper), .NET 9 HybridCache và tối ưu hóa truy vấn Big Data.' },
+            arch: { title: 'Kiến trúc & Mẫu thiết kế', desc: 'Clean Architecture, Thiết kế hướng tên miền (DDD), CQRS với MediatR vertical slices, và SOLID.' },
+            ai: { title: 'Chuyên môn nâng cao', desc: 'Tinh chỉnh hiệu năng hệ thống, tích hợp AI doanh nghiệp, thiết kế hệ thống phân tán mở rộng.' }
           },
           experience: {
             title: 'Kinh nghiệm làm việc',
