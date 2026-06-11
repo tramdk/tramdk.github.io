@@ -140,6 +140,60 @@ const MeshGradientBg = memo(() => (
   </div>
 ));
 
+// ─── Parallax Scrolling Background ───
+const ParallaxBackground = memo(() => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const elements = containerRef.current?.querySelectorAll('.parallax-el');
+    if (!elements) return;
+
+    elements.forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-speed') || '1');
+      gsap.to(el, {
+        y: () => -window.innerHeight * (speed * 0.18),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: document.body,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.5,
+        }
+      });
+    });
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className="parallax-container absolute inset-0 z-[-1]">
+      {/* Summary section area background */}
+      <div className="parallax-el top-[12%] left-[8%] font-mono text-[9vw] font-black text-[var(--color-accent)] opacity-[0.03]" data-speed="1.2">
+        {"{ }"}
+      </div>
+      <div className="parallax-el top-[22%] right-[10%] w-72 h-72 parallax-shape border-[var(--color-accent)]/15" data-speed="-0.7" />
+
+      {/* Skills section area background */}
+      <div className="parallax-el top-[38%] left-[12%] parallax-text" data-speed="1.5">
+        &lt;STACK/&gt;
+      </div>
+      <div className="parallax-el top-[48%] right-[8%] font-mono text-[8vw] font-black text-purple-500/10" data-speed="-1.2">
+        {"[]"}
+      </div>
+
+      {/* Projects section area background */}
+      <div className="parallax-el top-[65%] left-[6%] w-96 h-96 parallax-shape border-purple-500/10" data-speed="0.8" />
+      <div className="parallax-el top-[75%] right-[15%] parallax-text" data-speed="2.0">
+        WEB.API
+      </div>
+
+      {/* Contact section area background */}
+      <div className="parallax-el top-[88%] left-[10%] font-mono text-[10vw] font-black text-[var(--color-accent)] opacity-[0.03]" data-speed="1.0">
+        {"#DEV"}
+      </div>
+      <div className="parallax-el top-[92%] right-[8%] w-64 h-64 parallax-shape border-[var(--color-accent)]/15" data-speed="-0.9" />
+    </div>
+  );
+});
+
 // ─── Floating Pill Navigation ───
 const navItems = [
   { id: 'summary', label: 'about' },
@@ -385,7 +439,7 @@ const Hero = () => {
 
             <h1
               ref={nameRef}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-[var(--color-text)]"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.15] text-[var(--color-text)]"
               style={{ fontFamily: 'var(--font-heading)', perspective: '600px' }}
             >
               {t('hero.name')}
@@ -651,6 +705,17 @@ const Skills = () => {
           }
         }
       );
+
+      gsap.to(titleEl, {
+        x: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: titleEl,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        }
+      });
     }
 
     // Skill cards — batch stagger reveal
@@ -817,6 +882,17 @@ const Experience = () => {
           }
         }
       );
+
+      gsap.to(titleEl, {
+        x: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: titleEl,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        }
+      });
     }
 
     // Experience cards — scroll-triggered entrance
@@ -990,6 +1066,17 @@ const PersonalProjects = () => {
           }
         }
       );
+
+      gsap.to(titleEl, {
+        x: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: titleEl,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        }
+      });
     }
 
     // Project cards — 3D flip entrance with batch
@@ -1113,6 +1200,17 @@ const Contact = () => {
           }
         }
       );
+
+      gsap.to(titleRef.current, {
+        x: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        }
+      });
     }
 
     // Description
@@ -1317,6 +1415,9 @@ export default function App() {
 
       {/* Background */}
       <MeshGradientBg />
+
+      {/* Parallax background */}
+      <ParallaxBackground />
 
       {/* Navigation */}
       <FloatingNav />
