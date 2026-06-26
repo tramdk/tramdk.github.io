@@ -1112,7 +1112,7 @@ const PersonalProjects = () => {
   }, { scope: ref, dependencies: [t] });
 
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto" ref={ref}>
+    <section id="personal-projects" className="py-24 px-6 md:px-12 max-w-7xl mx-auto" ref={ref}>
       <div className="mb-16">
         <h2
           className="projects-title text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)]"
@@ -1372,6 +1372,8 @@ const MagneticCursor = () => {
     if (isMobile) return;
 
     const buttons = document.querySelectorAll('.magnetic-btn');
+    const listeners: Array<{ btn: Element; move: (e: Event) => void; leave: () => void }> = [];
+
     buttons.forEach(btn => {
       const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3" });
       const yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3" });
@@ -1393,7 +1395,15 @@ const MagneticCursor = () => {
 
       btn.addEventListener('mousemove', handleMove);
       btn.addEventListener('mouseleave', handleLeave);
+      listeners.push({ btn, move: handleMove, leave: handleLeave });
     });
+
+    return () => {
+      listeners.forEach(({ btn, move, leave }) => {
+        btn.removeEventListener('mousemove', move);
+        btn.removeEventListener('mouseleave', leave);
+      });
+    };
   }, [isMobile]);
 
   return null;
@@ -1401,12 +1411,17 @@ const MagneticCursor = () => {
 
 // ─── App Root ───
 export default function App() {
+  const { i18n } = useTranslation();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
 
   return (
     <div className="min-h-screen font-sans relative overflow-x-hidden">
