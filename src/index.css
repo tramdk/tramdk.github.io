@@ -71,8 +71,31 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Smooth Theme Transitions ─── */
+.glass-panel,
+.glass-panel-strong,
+.spotlight-card,
+.sticky-card,
+.gsap-skill-card,
+.gsap-exp-card,
+.gsap-project-card,
+.hero-badge,
+button,
+a,
+span,
+h1,
+h2,
+h3,
+p,
+svg {
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── Custom Scrollbar ─── */

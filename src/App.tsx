@@ -202,11 +202,10 @@ const navItems = [
   { id: 'contact', label: 'contact' },
 ];
 
-const FloatingNav = () => {
+const FloatingNav = ({ isLight, toggleTheme }: { isLight: boolean; toggleTheme: () => void }) => {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -234,69 +233,59 @@ const FloatingNav = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = useCallback(() => {
-    setIsLight(prev => {
-      const next = !prev;
-      document.body.className = next ? 'theme-light' : '';
-      return next;
-    });
-  }, []);
-
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.nav
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 40, opacity: 0 }}
-          transition={SPRING}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 px-2 py-2 rounded-full glass-panel-strong"
-          style={{ backgroundColor: 'var(--color-card)' }}
+    <motion.nav
+      initial={{ y: 40, opacity: 0 }}
+      animate={{ y: visible ? 0 : 40, opacity: visible ? 1 : 0 }}
+      transition={SPRING}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 px-2 py-2 rounded-full glass-panel-strong"
+      style={{
+        backgroundColor: 'var(--color-card)',
+        pointerEvents: visible ? 'auto' : 'none'
+      }}
+    >
+      {navItems.map(item => (
+        <a
+          key={item.id}
+          href={`#${item.id}`}
+          onClick={e => {
+            e.preventDefault();
+            document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300"
+          style={{
+            color: activeSection === item.id ? 'var(--color-bg)' : 'var(--color-text-muted)',
+          }}
         >
-          {navItems.map(item => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300"
-              style={{
-                color: activeSection === item.id ? 'var(--color-bg)' : 'var(--color-text-muted)',
-              }}
-            >
-              {activeSection === item.id && (
-                <motion.div
-                  layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full"
-                  style={{ backgroundColor: 'var(--color-accent)' }}
-                  transition={SPRING_SNAPPY}
-                />
-              )}
-              <span className="relative z-10">
-                {t(`nav.${item.label}`)}
-              </span>
-            </a>
-          ))}
-
-          <div className="w-px h-5 bg-[var(--color-border)] mx-1" />
-
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
-            aria-label="Toggle theme"
-          >
+          {activeSection === item.id && (
             <motion.div
-              animate={{ rotate: isLight ? 180 : 0 }}
-              transition={SPRING}
-            >
-              {isLight ? <Moon size={16} strokeWidth={1.5} /> : <Sun size={16} strokeWidth={1.5} />}
-            </motion.div>
-          </button>
-        </motion.nav>
-      )}
-    </AnimatePresence>
+              layoutId="nav-pill"
+              className="absolute inset-0 rounded-full"
+              style={{ backgroundColor: 'var(--color-accent)' }}
+              transition={SPRING_SNAPPY}
+            />
+          )}
+          <span className="relative z-10">
+            {t(`nav.${item.label}`)}
+          </span>
+        </a>
+      ))}
+
+      <div className="w-px h-5 bg-[var(--color-border)] mx-1" />
+
+      <button
+        onClick={toggleTheme}
+        className="p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+        aria-label="Toggle theme"
+      >
+        <motion.div
+          animate={{ rotate: isLight ? 180 : 0 }}
+          transition={SPRING}
+        >
+          {isLight ? <Moon size={16} strokeWidth={1.5} /> : <Sun size={16} strokeWidth={1.5} />}
+        </motion.div>
+      </button>
+    </motion.nav>
   );
 };
 
@@ -1419,6 +1408,28 @@ export default function App() {
     restDelta: 0.001,
   });
 
+  const [isLight, setIsLight] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored === 'light';
+      return window.matchMedia('(prefers-color-scheme: light)').matches;
+    }
+    return false;
+  });
+
+  const toggleTheme = useCallback(() => {
+    setIsLight(prev => {
+      const next = !prev;
+      localStorage.setItem('theme', next ? 'light' : 'dark');
+      document.body.className = next ? 'theme-light' : '';
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    document.body.className = isLight ? 'theme-light' : '';
+  }, [isLight]);
+
   useEffect(() => {
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
@@ -1435,7 +1446,7 @@ export default function App() {
       <ParallaxBackground />
 
       {/* Navigation */}
-      <FloatingNav />
+      <FloatingNav isLight={isLight} toggleTheme={toggleTheme} />
       <LanguageSwitcher />
 
       {/* Magnetic cursor effect */}
